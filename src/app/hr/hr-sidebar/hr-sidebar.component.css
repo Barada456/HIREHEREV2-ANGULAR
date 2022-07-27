@@ -1,0 +1,32 @@
+.main-sidebar {
+  height: inherit;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  width: 251px;
+
+}
+.Clogo {
+
+  width: 55px;
+}
+
+
+
+
+.logo
+{
+  opacity: 1.8;
+  width: 76%;
+  float: revert;
+  margin-left: 12px;
+  margin-top: 13px;
+}
+
+.cr {
+  color: #01ff70;
+  margin-left: 3px;
+}
+p {
+  color: #01ff70;
+}

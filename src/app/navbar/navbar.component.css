@@ -1,0 +1,31 @@
+
+
+.main-header {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+  opacity:inherit;
+}
+
+.scroll {
+  max-height: 239px;
+  overflow: auto;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+  /* -webkit-transform: translate3d(0, 0, 0); */
+  border-radius : .8em;
+}
+.card{
+  border-radius: 30px;
+}
+
+.navbar{
+  background-color: #343A40;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+
+

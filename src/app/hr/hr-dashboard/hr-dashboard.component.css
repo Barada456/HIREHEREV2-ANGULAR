@@ -1,0 +1,245 @@
+.scroll {
+  max-height: 239px;
+  overflow: auto;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+  /* -webkit-transform: translate3d(0, 0, 0); */
+  border-radius : .8em;
+}
+.card{
+  border-radius: 8px;
+  color: #343A40;
+}
+
+.content {
+  padding: 60px 0 ;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+
+.main-header {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+  opacity:inherit;
+}
+.navbar{
+  background-color: #343A40;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+.main-sidebar {
+  height: inherit;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+
+}
+
+
+
+.logo
+{
+  opacity: 1.8;
+  width: 105%;
+  margin-left: -6px;
+}
+
+label {
+  font-weight: 600;
+  color: #555;
+}
+body {
+background: red;
+}
+
+.vertical {
+  border-left: 6px solid black;
+  height: auto;
+  position:absolute;
+  left: 50%;
+}
+
+img {
+  width: 100px;
+  height: 120px;
+  display: block;
+}
+ul {
+  list-style: none;
+}
+
+/* Utilities */
+.card::after,
+.card img {
+  border-radius: 50%;
+}
+body,
+.card,
+.stats {
+  display: flex;
+}
+
+.card {
+  padding: 2.5rem 4rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, .5);
+  max-width: 500px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .15);
+  margin: 1rem;
+  position: relative;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+.card::before {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #FFF;
+  border-radius: 10px;
+  top: -.7rem;
+  left: -.7rem;
+}
+
+
+.card img {
+  width: 8rem;
+  min-width: 80px;
+  box-shadow: 0 0 0 5px #FFF;
+}
+
+.infos {
+  margin-left: 1.5rem;
+}
+
+.name {
+  margin-bottom: 1rem;
+}
+.name h2 {
+  font-size: 1.3rem;
+}
+.name h4 {
+  font-size: .8rem;
+  color: #333
+}
+
+.text {
+  font-size: .9rem;
+  margin-bottom: 1rem;
+}
+
+.stats {
+  margin-bottom: 1rem;
+}
+.stats li {
+  min-width: 5rem;
+}
+.stats li h3 {
+  font-size: .99rem;
+}
+.stats li h4 {
+  font-size: .75rem;
+}
+
+.links button {
+  font-family: 'Poppins', sans-serif;
+  min-width: 120px;
+  padding: .5rem;
+  border: 1px solid #222;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .25s linear;
+}
+.links .follow,
+.links .view:hover {
+  background-color: #222;
+  color: #FFF;
+}
+.links .view,
+.links .follow:hover{
+  background-color: transparent;
+  color: #222;
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    display: block;
+  }
+  .infos {
+    margin-left: 0;
+    margin-top: 1.5rem;
+  }
+  .links button {
+    min-width: 100px;
+  }
+}
+
+.panellistcard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 250px;
+  padding-bottom: 15px;
+  background-color: white;
+  margin-left: 4rem;
+}
+
+.panellistcard img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-image: linear-gradient(60deg, #2AAA8A, #4169E1);
+  padding: 5px;
+  margin-left: 1rem;
+}
+
+.panellistcard h2{
+  margin: 10px 0;
+}
+
+.cont{
+  width: 90%;
+  height: 0;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.6s ease;
+}
+
+.panellistcard .cont .link i{
+  font-size: 25px;
+  color: rgb(82, 82, 82);
+  transition: all 0.2s ease;
+}
+
+.carpanellistcardd .cont .link i:hover{
+  color: black;
+  cursor: pointer;
+}
+
+.panellistcard:hover > .cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  height: auto;
+}
+
+.panellistcard:hover > .link{
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+

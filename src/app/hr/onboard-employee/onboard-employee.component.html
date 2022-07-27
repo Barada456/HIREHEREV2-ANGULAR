@@ -1,0 +1,86 @@
+<app-hr-sidebar></app-hr-sidebar>
+<br />
+<br />
+<div class="container">
+  <h2 class="title text-center">Add New Employee</h2>
+  <form [formGroup]="onboardEmployeeForm" (ngSubmit)="onBoardEmployee()">
+    <div class="row " style="margin-left: 12%;">
+      <div class="col-sm-6 form-group">
+        <label for="name-f">Name</label>
+        <input type="text" class="form-control"  formControlName="empName" id="name-f" placeholder="Enter full name"
+          required />
+        <span  class="text-danger font-weight-bold"  *ngIf="empName && empName.invalid && empName.touched" >This field can't be empty</span>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="address-l">Address</label>
+        <input type="address" class="form-control"   formControlName="empAddress" id="name-l" placeholder="Enter address"
+          required />
+          <span  class="text-danger font-weight-bold"  *ngIf="empAddress && empAddress.invalid && empAddress.touched" >This field can't be empty</span>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="tel">Mobile No</label>
+        <input type="number" class="form-control" formControlName="empMobNo" id="empMobNo" placeholder="Enter mobile no"
+          required />
+          <div *ngIf="empMobNo && empMobNo.touched && empMobNo.invalid" class="text-danger font-weight-bold">
+            <span *ngIf="empMobNo.errors?.['required']">Please enter mobile number</span>
+            <span  *ngIf="empMobNo.errors?.['pattern']">
+              Mobile No must be of 10 digits
+            </span>
+          </div>
+
+        </div>
+      <div class="col-sm-6 form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control"   formControlName="empEmail" id="email" placeholder="Enter email"
+          required />
+          <div *ngIf="empEmail && empEmail.touched && empEmail.invalid" class="text-danger font-weight-bold">
+            <span *ngIf="empEmail.errors?.['required']">Please enter an Email</span>
+            <span  *ngIf="empEmail.errors?.['email']">
+              Please enter a valid email
+            </span>
+          </div>
+
+        </div>
+      <div class="col-sm-6 form-group">
+        <label for="date-1">Date Of Birth</label>
+        <input type="date"  formControlName="empDob" class="form-control" required />
+        <span  class="text-danger font-weight-bold"  *ngIf="empDob && empDob.invalid && empDob.touched" >This field can't be empty</span>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="date-2">Date Of Join </label>
+        <input type="date"  formControlName="empDoj" class="form-control" required />
+        <span  class="text-danger font-weight-bold"  *ngIf="empDoj && empDoj.invalid && empDoj.touched" >This field can't be empty</span>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="Designation">Designation</label>
+        <input type="text"  class="form-control" formControlName="empDesignation" placeholder="Enter designation"
+          required />
+          <span  class="text-danger font-weight-bold"  *ngIf="empDesignation && empDesignation.invalid && empDesignation.touched" >This field can't be empty</span>
+      </div>
+
+      <div class="col-sm-6 form-group">
+        <label for="reporting">Reporting To</label>
+        <select name="reportingTo"  formControlName="reportingTo" class="form-control custom-select browser-default">
+          <option value="jajati">Jajati Sir</option>
+        </select>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="Designation">Department</label>
+        <input type="text" class="form-control"  formControlName="empDepartment" placeholder="Enter Department" required />
+        <span  class="text-danger font-weight-bold"  *ngIf="empDepartment && empDepartment.invalid && empDepartment.touched" >This field can't be empty</span>
+      </div>
+
+      <div class="col-sm-6 form-group">
+        <label for="image">Image</label>
+        <input type="file" class="form-control"  (change)="onEmployeeImageUpload($event)" required />
+      </div>
+
+      <div class="modal-footer col-sm-12 form-group mb-0">
+        <button #closeOnBoardModal type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button class="btn btn-primary float-right" [disabled]="onboardEmployeeForm.invalid">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

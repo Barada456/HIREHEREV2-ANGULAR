@@ -1,0 +1,118 @@
+<app-pm-sidebar></app-pm-sidebar>
+<!-- <main class="main-area ">
+  <div class="centered">
+    <section class="cards">
+      <article class="card">
+        <h3>Employees</h3>
+        <a href="#" *ngFor="let employee of employeeArray">
+          <picture class="thumbnail" *ngIf="employee.isAvailable; else elseBlock">
+            <img class="greenImg" [src]="'data:image/jpeg;base64,' + employee.empProfileImage" />
+          </picture>
+          <ng-template #elseBlock>
+            <div draggable="false" style="pointer-events: none">
+              <picture class="thumbnail">
+                <img class="redImg"  [src]="'data:image/jpeg;base64,' + employee.empProfileImage" />
+              </picture>
+            </div>
+          </ng-template>
+          <h4 style="pointer-events: none">{{ employee.empName }}</h4>
+        </a>
+      </article>
+    <article class="card">
+        <h3>Projects</h3>
+        <a _blank *ngFor="let project of projectArray">
+          <div (click)="showProjectDetails(project.projectId)">
+            <picture class="thumbnail">
+              <img class="normalimg" [src]="'data:image/jpeg;base64,' + project.projectLogo" />
+            </picture>
+            <h4>{{ project.projectName }}</h4>
+          </div>
+        </a>
+      </article>
+
+
+
+      <div class="card mb-3" style="max-width: 440px ; height: auto" *ngIf="projectByIdRequestTriggered">
+        <div class="row no-gutters" *ngIf="projectObj != null">
+          <div class="col-md-4">
+            <img class="normalimg" [src]="'data:image/jpeg;base64,' + projectObj.projectLogo" class="card-img"
+              alt="..." />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ projectObj.projectName }}</h5>
+              <p class="card-text">{{ projectObj.clientName }}</p>
+              <p class="card-text">
+                <small class="text-muted">{{
+                  projectObj.clientLocation
+                  }}</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</main> -->
+
+
+<div class="container">
+  <div class="card-deck text-center   justify-content-center">
+    <div class="card col shadow-sm ">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Employees</h4>
+      </div>
+      <div class="employeesBody ">
+        <div class="card-body " *ngFor="let employee of employeeArray">
+          <div class="col ">
+            <img [src]="'data:image/jpeg;base64,' + employee.empProfileImage"
+              [ngClass]="employee.isAvailable ? 'card-img-top  mx-auto d-block greenImg' : 'card-img-top  mx-auto d-block redImg'"
+              [alt]=employee.empName (dragstart)="drag(employee)" />
+
+            <h3 class="card-text text-center ">{{ employee.empName }}</h3>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="card col shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Projects</h4>
+      </div>
+      <div class="employeesBody ">
+        <div class="card-body" *ngFor="let project of projectArray" (click)="showProjectDetails(project.projectId)">
+          <img class="card-img-top" [src]="'data:image/jpeg;base64,' + project.projectLogo" draggable="false"/>
+          <h4 class="card-text text-center">{{ project.projectName }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col shadow-sm" *ngIf="projectByIdRequestTriggered">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal text-center">{{ projectObj.projectName }}</h4>
+      </div>
+      <div class="card-body" *ngIf="projectObj != null">
+        <img class="card-img-top" [src]="'data:image/jpeg;base64,' + projectObj.projectLogo" class="card-img"
+          (drop)="drop(projectObj.projectId)" (dragover)="allowDrop($event)" draggable="false" />
+        <h5 class="card-text"> Client Name :: {{ projectObj.clientName }}</h5>
+        <div class="container">
+          <div class="row">
+          <div class="col-sm" *ngFor="let employee of employeeForProject">
+            <img [src]="'data:image/jpeg;base64,' + employee.empProfileImage" class="img-rounded" style=" width: 50px;
+            height: 50px;
+            object-fit: cover;"
+             />
+          </div>
+        </div>
+        </div>
+
+        <!-- <img  *ngIf="isDropped" class="img-rounded" style="width:50px" [src]="'data:image/jpeg;base64,' + employeeDraaggedImg" class="thumbnail" /> -->
+        <button type="button" class="btn btn-lg btn-block btn-primary" (click)="assignProject()">
+          Assign Project
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

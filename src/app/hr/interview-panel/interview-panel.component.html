@@ -1,0 +1,96 @@
+<app-hr-sidebar></app-hr-sidebar>
+<br/>
+<div class="container-fluid">
+  <div class="content con">
+    <div class="header">
+      <h2 class="title text-center" >
+        Interview Panel
+      </h2>
+
+    </div>
+
+    <div class="container ">
+      <div class="row">
+        <div class="col-4 col overflow-auto" style="height: 333px;margin-left: 13%;margin-top: 3%;">
+          <h4 class="title text-center">
+            List of Panels
+          </h4>
+          <!-- <ul class="list-group" *ngFor="let panel of panelsArray">
+            <li class="list-group-item"><h5 class="mb-1">{{panel.panelFor}}</h5></li>
+          </ul> -->
+          <div class="panellistcard" *ngFor="let panel of panelsArray">
+            <h4>{{ panel.panelFor }}</h4>
+
+            <div class="cont">
+              <div *ngFor="let employee of panel.employee">
+                <img [src]="'data:image/jpeg;base64,' + employee.empProfileImage" />
+                <h5>{{ employee.empName }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col2">
+          <h4 class="title text-center" >
+            Add New Panel
+          </h4>
+          <div class="container">
+            <form #panelAddForm="ngForm" (ngSubmit)="savePanelData(panelAddForm.value)">
+              <div class="row jumbotron">
+                <div class="col-sm-6 form-group">
+                  <label for="name-f">Panel For</label>
+                  <input type="text" class="form-control" ngModel name="panelFor" id="name-f"
+                    placeholder="Enter Panel name" required />
+                </div>
+
+                <div class="col-sm-6 form-group">
+                  <label for="reporting">Members</label>
+                  <select name="employee" ngModel class="form-control custom-select browser-default" multiple
+                    required>
+                    <option class="employeeOption" (mouseover)="getEmployeeImage(employee)"
+                      (mouseout)="resetEmployeeImage()" *ngFor="let employee of employeeArray" [ngValue]="employee">
+                      {{ employee.empName }}
+                    </option>
+                  </select>
+                </div>
+                <div class="row">
+
+                </div>
+
+                <div class="modal-footer col-sm-12 form-group mt-4">
+                  <button  type="button" class="btn btn-secondary">
+                    Close
+                  </button>
+                  <button class="btn btn-primary ">Submit</button>
+                </div>
+
+              </div>
+              <!-- <div class="wrapper">
+                <span class="hiddenimg"><img [src]="empObj.empProfileImage" width="100" /></span>
+              </div> -->
+              <div *ngIf="empObj != null; then ifblock"></div>
+              <ng-template #ifblock>
+                <div class="card">
+                  <div class="img">
+                    <img [src]="
+                        'data:image/jpeg;base64,' + empObj.empProfileImage
+                      " />
+                    <div class="name">
+                      <h2>{{ empObj.empName }}</h2>
+                      <h2>{{ empObj.empNo }}</h2>
+                    </div>
+                    <h2 class="text">
+                      {{ empObj.empDesignation }}
+                    </h2>
+                  </div>
+                </div>
+              </ng-template>
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
