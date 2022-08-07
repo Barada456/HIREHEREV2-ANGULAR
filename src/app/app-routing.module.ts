@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddProjectComponent } from './ceo/add-project/add-project.component';
 import { CEOAllemployeesComponent } from './ceo/allemployees/allemployees.component';
 import { CeopageComponent } from './ceo/ceopage/ceopage.component';
+import { DemandsComponent } from './ceo/demands/demands.component';
 import { EmployeesComponent } from './commons/employees/employees.component';
 import { EmployeePageComponent } from './employee/employee-page/employee-page.component';
 import { AllemployeesComponent } from './hr/allemployees/allemployees.component';
@@ -61,8 +62,12 @@ const routes: Routes = [
     component: AddProjectComponent
   },
   {
+    path: 'ceo/demands',
+    component: DemandsComponent 
+  },
+  {
     path: 'ceo/all-employee',
-    component: CEOAllemployeesComponent ,
+    component: CEOAllemployeesComponent 
   },
   {
     path: 'employee',

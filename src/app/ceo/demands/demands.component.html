@@ -1,0 +1,54 @@
+<app-ceo-sidebar></app-ceo-sidebar>
+<br /><br /><br /><br />
+<div class="container">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        DEMANDS
+      </div>
+      <div class="panel-body">
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th>JD ID</th>
+              <th>Position For</th>
+              <th>Domain</th>
+              <th>Qualiifications</th>
+              <th>Skill Sets</th>
+              <th>Experience In years</th>
+
+            </tr>
+          </thead>
+
+          <tbody *ngFor="let demand of demandsArray"> 
+            <tr data-toggle="collapse"  [attr.data-target]="'#'+ demand.jdId" class="accordion-toggle" >
+              <td><button class="btn btn-default btn-xs"><i class="nav-icon fa fa-eye"></i></button>
+              </td>
+              <td>{{demand.jdId}}</td>
+              <td>{{demand.positionFor}}</td>
+              <td>{{demand.domain}}</td>
+              <td>{{demand.qualification}}</td>
+              <td>{{demand.skillSets}}</td>
+              <td>{{demand.experienceInYears}}</td>
+            </tr>
+
+            <tr>
+              <td colspan="12" class="hiddenRow">
+                <div class="accordian-body collapse" id={{demand.jdId}}>
+                  <span> {{demand.responsibilites}} 
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</div>

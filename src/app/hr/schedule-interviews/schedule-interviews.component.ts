@@ -95,6 +95,7 @@ export class ScheduleInterviewsComponent implements OnInit {
       console.log("element in JSON" + JSON.stringify(element));
       this.JDArray.push(
         new JobDescription(
+         element.jdId,
          element.qualification ,
          element.domain,
          element.skillSets,

@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { CEOAllemployeesComponent } from './allemployees/allemployees.component';
 import { CommonsModule } from '../commons/commons.module';
+import { DemandsComponent } from './demands/demands.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -15,11 +17,13 @@ import { CommonsModule } from '../commons/commons.module';
     CeoSidebarComponent,
     CeopageComponent,
     AddProjectComponent,
-    CEOAllemployeesComponent
+    CEOAllemployeesComponent,
+    DemandsComponent
   ],
   imports: [
     RouterModule,
-    CommonsModule
+    CommonsModule,
+    BrowserModule
   ]
 })
 export class CeoModule { }

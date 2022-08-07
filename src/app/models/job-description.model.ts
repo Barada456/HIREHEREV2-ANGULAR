@@ -1,4 +1,5 @@
 export class JobDescription {
+  public jdId : string ;
   public qualification!: string;
   public domain!: string;
   public skillSets!: string;
@@ -6,7 +7,8 @@ export class JobDescription {
   public positionFor!: string;
   public responsibilites!: string;
 
-  constructor(qualification : any, domain : string, skillSets : string, experienceInYears : string, positionFor : string, responsibilites : string) {
+  constructor(jdId : string ,qualification : any, domain : string, skillSets : string, experienceInYears : string, positionFor : string, responsibilites : string) {
+    this.jdId = jdId;
     this.qualification = qualification;
     this.domain = domain;
     this.skillSets = skillSets;
