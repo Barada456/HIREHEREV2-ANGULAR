@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmployeesComponent } from './employees/employees.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -9,7 +10,11 @@ import { EmployeesComponent } from './employees/employees.component';
     EmployeesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserModule
+  ],
+  exports:[
+    EmployeesComponent
   ]
 })
 export class CommonsModule { }

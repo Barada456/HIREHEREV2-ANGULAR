@@ -1,1 +1,78 @@
-<p>employees works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" *ngFor="let employee of employeeArray">
+      <div class="card shadow">
+        <img [src]="'data:image/jpeg;base64,' + employee.empProfileImage" class="card-img-top" />
+        <div class="card-body">
+          
+          <div class="row">
+
+            <div class="col-sm ">
+              
+              <i class=" far fa-solid fa-user"></i>
+            </div>
+            <div class="col-sm ">
+              <h6>{{employee.empName}}</h6>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-sm ">
+
+              <i class="far fa-solid fa-id-card"></i>
+            </div>
+            <div class="col-sm ">
+              <h6>{{employee.empNo}}</h6>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-sm ">
+              <i class="far fas fa-code-branch"></i>
+            </div>
+            <div class="col-sm ">
+              <h6>{{employee.empDesignation}}</h6>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm ">
+              <i class="far fas  fa-sitemap"></i>
+            </div>
+            <div class="col-sm ">
+              <h6>{{employee.empDepartment}}</h6>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm ">
+              <i class="far fas fa-phone"></i>
+            </div>
+            <div class="col-sm ">
+              <h6>{{employee.empMobNo}}</h6>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+    </div>
+
+   
+
+  </div>
+  <div *ngIf="showLoader" class="loaderdiv mt-5 text-center">
+    <section class="loading">
+
+      <span class="loadWords">Fetching Employees ! Please Wait ...</span>
+      <span class="loading__anim"></span>
+    </section>
+ </div>

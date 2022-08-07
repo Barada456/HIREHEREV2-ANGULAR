@@ -6,6 +6,7 @@ import { PmPageComponent } from './pm-page/pm-page.component';
 import { PmSidebarComponent } from './pm-sidebar/pm-sidebar.component';
 import {RouterModule} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AllemployeesComponent } from './allemployees/allemployees.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DemandResourceComponent,
     ProjectAssignmentComponent,
     PmPageComponent,
-    PmSidebarComponent
+    PmSidebarComponent,
+    AllemployeesComponent
   ],
   imports: [
     RouterModule,

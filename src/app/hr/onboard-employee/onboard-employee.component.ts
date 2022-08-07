@@ -14,7 +14,6 @@ export class OnboardEmployeeComponent implements OnInit {
 
   selectedFile!: File;
 
-  employeeArray: Employee[] = [];
 
   constructor(private HrService: HrServiceService) { }
 
@@ -73,7 +72,8 @@ export class OnboardEmployeeComponent implements OnInit {
     ).subscribe(
       (response) => {
         alert(response);
-        this.connectEmployeeExtraction()
+        this.connectEmployeeExtraction();
+        
       },
       (error) => {
         console.error('error caught in component' + error.message);
@@ -90,41 +90,9 @@ export class OnboardEmployeeComponent implements OnInit {
 
     stompClient.connect({}, (frame: any) => {
       stompClient.send('/app/extractAllEmployees');
-
-      stompClient.subscribe(
-        '/message/allemployee',
-        (details: any) => {
-          this.getEmployeesOnSocket(details.body);
-        }
-      );
+      stompClient.send('/app/extractAllPMNotifications');
     });
 
-
-  }
-
-  getEmployeesOnSocket(employees: any) {
-    //console.log('getEmployees called');
-    this.employeeArray = [];
-    const obj = JSON.parse(employees);
-    obj.employees.forEach((element: any) => {
-      //console.log(element);
-      this.employeeArray.push(
-        new Employee(
-          element.empNo,
-          element.empName,
-          element.empAddress,
-          element.empMobNo,
-          element.empEmail,
-          element.empDob,
-          element.empDoj,
-          element.empDesignation,
-          element.reportingTo,
-          element.empDepartment,
-          element.empProfileImage,
-          element.isAvailable
-        )
-      );
-    });
   }
 
   onEmployeeImageUpload(event: any) {

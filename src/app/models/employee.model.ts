@@ -22,6 +22,7 @@ export class Employee {
     this.empDob = empDob;
     this.empDoj = empDoj;
     this.empDesignation = empDesignation;
+    this.empDepartment = empDepartment;
     this.reportingTo = reportingTo;
     this.empProfileImage = empProfileImage;
     this.isAvailable = isAvailable;

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProjectComponent } from './ceo/add-project/add-project.component';
+import { CEOAllemployeesComponent } from './ceo/allemployees/allemployees.component';
 import { CeopageComponent } from './ceo/ceopage/ceopage.component';
 import { EmployeesComponent } from './commons/employees/employees.component';
 import { EmployeePageComponent } from './employee/employee-page/employee-page.component';
+import { AllemployeesComponent } from './hr/allemployees/allemployees.component';
 import { HrpageComponent } from './hr/hrpage/hrpage.component';
 import { InterviewPanelComponent } from './hr/interview-panel/interview-panel.component';
 import { OnboardEmployeeComponent } from './hr/onboard-employee/onboard-employee.component';
@@ -31,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'hr/all-employee',
-    component: EmployeesComponent
+    component: AllemployeesComponent
   },
   {
     path: 'pm',
@@ -60,7 +62,7 @@ const routes: Routes = [
   },
   {
     path: 'ceo/all-employee',
-    component: EmployeesComponent
+    component: CEOAllemployeesComponent ,
   },
   {
     path: 'employee',

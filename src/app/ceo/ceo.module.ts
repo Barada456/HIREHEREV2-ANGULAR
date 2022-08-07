@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CeoDashboardComponent } from './ceo-dashboard/ceo-dashboard.component';
 import { CeoSidebarComponent } from './ceo-sidebar/ceo-sidebar.component';
 import { CeopageComponent } from './ceopage/ceopage.component';
 import { RouterModule } from '@angular/router';
 import { AddProjectComponent } from './add-project/add-project.component';
+import { CEOAllemployeesComponent } from './allemployees/allemployees.component';
+import { CommonsModule } from '../commons/commons.module';
 
 
 
@@ -13,11 +14,12 @@ import { AddProjectComponent } from './add-project/add-project.component';
     CeoDashboardComponent,
     CeoSidebarComponent,
     CeopageComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    CEOAllemployeesComponent
   ],
   imports: [
     RouterModule,
-    CommonModule
+    CommonsModule
   ]
 })
 export class CeoModule { }

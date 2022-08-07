@@ -11,6 +11,8 @@ import { OnboardEmployeeComponent } from './onboard-employee/onboard-employee.co
 import { ScheduleInterviewsComponent } from './schedule-interviews/schedule-interviews.component';
 import { InterviewsComponent } from './interviews/interviews.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonsModule } from '../commons/commons.module';
+import { AllemployeesComponent } from '../hr/allemployees/allemployees.component';
 
 
 @NgModule({
@@ -21,14 +23,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InterviewPanelComponent,
     OnboardEmployeeComponent,
     ScheduleInterviewsComponent,
-    InterviewsComponent
+    InterviewsComponent,
+    AllemployeesComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    CommonsModule
   ],
   exports:[
     HrSidebarComponent,

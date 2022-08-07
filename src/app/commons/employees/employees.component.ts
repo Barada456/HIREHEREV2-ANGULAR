@@ -13,14 +13,19 @@ export class EmployeesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
     this.connectEmployeeExtraction();
   }
 
 
   employeeArray: Employee[] = [];
 
+  showLoader : any ;
+
   connectEmployeeExtraction() {
-    var socket = new SockJS('http://localhost:9090/gs-guide-websocket');
+    this.showLoader = true;
+    console.log("before performing rest call "+this.showLoader);
+    let socket = new SockJS('http://localhost:9090/gs-guide-websocket');
     let stompClient: any;
     stompClient = Stomp.over(socket);
     stompClient.connect({}, (frame: any) => {
@@ -41,6 +46,8 @@ export class EmployeesComponent implements OnInit {
     //console.log('getEmployees called');
     this.employeeArray = [];
     const obj = JSON.parse(employees);
+    
+    
     obj.employees.forEach((element: any) => {
       //console.log(element);
       this.employeeArray.push(
@@ -60,6 +67,7 @@ export class EmployeesComponent implements OnInit {
         )
       );
     });
+    this.showLoader = false;
   }
 
 }

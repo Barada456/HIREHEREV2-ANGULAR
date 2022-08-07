@@ -14,6 +14,8 @@ import { HrServiceService } from './services/hr-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { PMModule } from './pm/pm.module';
+import { CommonsModule } from './commons/commons.module';
+import { EmployeesComponent } from './commons/employees/employees.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,12 @@ import { PMModule } from './pm/pm.module';
     HrModule,
     CeoModule,
     PMModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonsModule
   ],
   exports:[
-    NavbarComponent
+    NavbarComponent,
+    EmployeesComponent
   ],
   bootstrap: [AppComponent] ,
   providers : [HrServiceService]
