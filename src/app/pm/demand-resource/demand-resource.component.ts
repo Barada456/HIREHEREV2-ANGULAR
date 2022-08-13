@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Stomp } from '@stomp/stompjs';
+import * as SockJS from 'sockjs-client';
+import { DemandsComponent } from 'src/app/ceo/demands/demands.component';
 import { JobDescription } from 'src/app/models/job-description.model';
 import { PMService } from 'src/app/services/pm.service';
 
@@ -32,6 +35,7 @@ export class DemandResourceComponent implements OnInit {
     console.log(data);
     this.pmService.onDemandResource(data).subscribe(
       (response) => {
+        this.connectDemandsExtraction();
         alert('Demand saved  Suceessfully');
       },
       (error) => {
@@ -39,5 +43,15 @@ export class DemandResourceComponent implements OnInit {
         alert(error.error);
       }
     );
+  }
+
+  connectDemandsExtraction() {
+    var socket = new SockJS('http://localhost:9090/gs-guide-websocket');
+    let stompClient: any;
+    stompClient = Stomp.over(socket);
+
+    stompClient.connect({}, (frame: any) => {
+      stompClient.send('/app/extractAllDemands');
+    });
   }
 }

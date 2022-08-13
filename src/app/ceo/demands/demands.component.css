@@ -8,3 +8,11 @@ body{
 .hiddenRow {
     padding: 0 !important;
 }
+.approvedglow { text-shadow: 0 0 10px #fff700;
+font-size: 12px;}
+
+.rejectedglow { text-shadow: 0 0 10px #e50606;
+  font-size: 12px;}
+
+  .pendingglow { text-shadow: 0 0 10px #43de0b;
+    font-size: 12px;}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { JobDescription } from '../../models/job-description.model';
+import { CeoService } from '../../services/ceo.service';
 
 @Component({
   selector: 'app-demands',
@@ -10,15 +11,14 @@ import { JobDescription } from '../../models/job-description.model';
 })
 export class DemandsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ceoService : CeoService) { }
 
   ngOnInit(): void {
-    this.connectPanelExtraction();
+    this.connectDemandsExtraction();
   }
-
   demandsArray : any[] = [];
 
-  connectPanelExtraction() {
+  connectDemandsExtraction() {
     var socket = new SockJS('http://localhost:9090/gs-guide-websocket');
     let stompClient: any;
     stompClient = Stomp.over(socket);
@@ -39,7 +39,7 @@ export class DemandsComponent implements OnInit {
     this.demandsArray = [];
     const obj = JSON.parse(demands);
     obj.demands.forEach((element: any) => {
-      console.log("element" + element);
+      console.log("element" + JSON.stringify(element));
       this.demandsArray.push(
         new JobDescription(
          element.jdId,
@@ -48,11 +48,37 @@ export class DemandsComponent implements OnInit {
          element.skillSets,
          element.experienceInYears,
          element.positionFor,
-         element.responsibilites
+         element.responsibilites,
+         element.isApproved
         )
       );
     });
 
+  }
+
+  approveJD(jdId : any){
+    console.log("approve jd in demands page clicked");
+    this.ceoService.approveJD(jdId).subscribe((response) => {
+      this.connectDemandsExtraction();
+      alert('Demand Approved  Suceessfully');
+    },
+    (error) => {
+      console.error('Demand Approving Failed' + error.message);
+      alert("Demand Approving Failed");
+    });
+
+
+  }
+
+  rejectJD(jdId : any){
+    this.ceoService.rejectJD(jdId).subscribe((response) => {
+      this.connectDemandsExtraction();
+      alert('Demand Rejected  Suceessfully');
+    },
+    (error) => {
+      console.error('Demand Rejecting Failed' + error.message);
+      alert('Demand Rejecting Failed');
+    });
   }
 
 }

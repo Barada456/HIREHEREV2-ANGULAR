@@ -101,7 +101,8 @@ export class ScheduleInterviewsComponent implements OnInit {
          element.skillSets,
          element.experienceInYears,
          element.positionFor,
-         element.responsibilites
+         element.responsibilites,
+         element.approved
         )
       );
     });

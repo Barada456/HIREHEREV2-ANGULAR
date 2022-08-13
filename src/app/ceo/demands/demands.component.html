@@ -21,7 +21,7 @@
             </tr>
           </thead>
 
-          <tbody *ngFor="let demand of demandsArray"> 
+          <tbody *ngFor="let demand of demandsArray">
             <tr data-toggle="collapse"  [attr.data-target]="'#'+ demand.jdId" class="accordion-toggle" >
               <td><button class="btn btn-default btn-xs"><i class="nav-icon fa fa-eye"></i></button>
               </td>
@@ -30,15 +30,24 @@
               <td>{{demand.domain}}</td>
               <td>{{demand.qualification}}</td>
               <td>{{demand.skillSets}}</td>
-              <td>{{demand.experienceInYears}}</td>
+              <td>{{demand.experienceInYears}}
+
+              </td>
+              <td>
+              <h1 class="approvedglow" *ngIf="demand.isApproved=='Approved'">Approved</h1>
+              <h1 class="rejectedglow" *ngIf="demand.isApproved=='Rejected'">Rejected</h1>
+              <h1 class="pendingglow" *ngIf="demand.isApproved=='Pending'">Pending</h1></td>
             </tr>
 
             <tr>
               <td colspan="12" class="hiddenRow">
-                <div class="accordian-body collapse" id={{demand.jdId}}>
-                  <span> {{demand.responsibilites}} 
-                  </span>
+                <div class="accordian-body collapse " id={{demand.jdId}}>
+                  <pre><span> {{demand.responsibilites}}
+                  </span></pre>
+
+                  <button [ngClass]="{'disabled': demand.isApproved!='Pending'}" class="btn btn-success " (click)="approveJD(demand.jdId)">Approve</button><button [ngClass]="{'disabled': demand.isApproved!='Pending'}" class="btn btn-danger" (click)="rejectJD(demand.jdId)">Reject</button>
                 </div>
+
               </td>
             </tr>
 
